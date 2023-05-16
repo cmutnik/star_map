@@ -58,8 +58,16 @@ constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   st_intersection(hemisphere) %>%
   filter(!is.na(st_is_valid(.))) %>%
   mutate(geometry = geometry * flip) 
-
 st_crs(constellation_lines_sf_cam) <- virginia_beach
+########################################
+url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/neutron_star_PSR_J0740p6620_messier_format.json"
+# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/j0740.json"
+stars_sf_ns_j0740 <- st_read(url4,stringsAsFactors = FALSE) %>% 
+  st_transform(crs = virginia_beach) %>%
+  st_intersection(hemisphere) %>%
+  mutate(geometry = geometry * flip) 
+st_crs(stars_sf_ns_j0740) <- virginia_beach
+########################################
 ########################################
 ########################################
 p <- ggplot() +
@@ -67,8 +75,11 @@ p <- ggplot() +
           color = "white")+
   geom_sf(data = constellation_lines_sf, linewidth = 1, color = "#ffffff",
           size = 2) +
-  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#e84a4a",
+  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#1eff00",
           size = 3) +
+  # geom_sf(data = stars_sf_ns_j0740, aes(size = -exp(mag), alpha = -exp(mag)),
+  geom_sf(data = stars_sf_ns_j0740, aes(size = 20, alpha = 1),
+          color = "#ff0000") +
   annotation_custom(circleGrob(r = 0.46, 
                                gp = gpar(col = "white", lwd = 10, fill = NA))) +
   scale_y_continuous(breaks = seq(0, 90, 15)) +
