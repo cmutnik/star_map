@@ -1,0 +1,19 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "J0740",
+            "properties": {
+                "name": "PSR J0740+6620",
+                "desig": "PSR J0740+6620",
+                "alt": "Strong Sauce",
+                "type": "ns",
+                "mag": 6,
+                "dim": "6x4",
+                "cl": "",
+            },
+            "geometry": {"type": "Point", "coordinates": [149.729709, 29.599376]},
+        },
+    ],
+}
