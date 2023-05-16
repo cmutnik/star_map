@@ -1,0 +1,11 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": 88,
+            "properties": {"mag": 6, "bv": "0.911"},
+            "geometry": {"type": "Point", "coordinates": [0.2691, -48.8099]},
+        },
+    ],
+}
