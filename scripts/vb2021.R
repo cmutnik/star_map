@@ -60,8 +60,8 @@ constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   mutate(geometry = geometry * flip) 
 st_crs(constellation_lines_sf_cam) <- virginia_beach
 ########################################
-url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/neutron_star_PSR_J0740p6620_messier_format.json"
-# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/j0740.json"
+url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
+# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/j0740.json"
 stars_sf_ns_j0740 <- st_read(url4,stringsAsFactors = FALSE) %>% 
   st_transform(crs = virginia_beach) %>%
   st_intersection(hemisphere) %>%
@@ -97,5 +97,9 @@ p <- ggplot() +
                                     face = 2, size = 25, 
                                     margin = margin(150, 20, 20, 20)))
 ########################################
-ggsave('vb2021.png', plot = p, width = unit(10, 'in'), 
+# ggsave('../figs/vb2021.png', plot = p, width = unit(10, 'in'), 
+#        height = unit(15, 'in'))
+
+# Save as PDF.
+ggsave('../figs/vb2021.pdf', plot = p, width = unit(10, 'in'), 
        height = unit(15, 'in'))
