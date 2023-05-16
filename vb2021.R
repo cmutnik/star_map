@@ -74,7 +74,7 @@ p <- ggplot() +
   scale_y_continuous(breaks = seq(0, 90, 15)) +
   scale_size_continuous(range = c(0, 2)) +
   annotation_custom(mask) +
-  labs(caption = 'STRONG SAUCE\nVirginia Beach, VA, USA\n17th May 2021') +
+  labs(caption = 'STRONG SAUCE\nVirginia Beach, VA, USA\nPSR J0740+6620\n17th May 2021') +
   theme_void() +
   theme(legend.position = "none",
         panel.grid.major = element_line(color = "grey35", linewidth = 1),  
