@@ -48,11 +48,27 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
                            0.5 + 0.46 * sin(seq(0, 2*pi, len = 100))),
                     gp = gpar(fill = '#191d29', col = '#191d29'))
 ########################################
+########################################
+########################################
+# Color specific constellations
+url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/cam.constellations.lines.json"
+constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
+  st_transform(crs = virginia_beach) %>%
+  st_intersection(hemisphere) %>%
+  filter(!is.na(st_is_valid(.))) %>%
+  mutate(geometry = geometry * flip) 
+
+st_crs(constellation_lines_sf_cam) <- virginia_beach
+########################################
+########################################
 p <- ggplot() +
   geom_sf(data = stars_sf, aes(size = -exp(mag), alpha = -exp(mag)),
           color = "white")+
   geom_sf(data = constellation_lines_sf, linewidth = 1, color = "#ffffff",
           size = 2) +
+  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#e84a4a",
+          size = 3) +
   annotation_custom(circleGrob(r = 0.46, 
                                gp = gpar(col = "white", lwd = 10, fill = NA))) +
   scale_y_continuous(breaks = seq(0, 90, 15)) +
