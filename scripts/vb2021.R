@@ -51,7 +51,8 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
 ########################################
 ########################################
 # Color specific constellations
-url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/cam.constellations.lines.json"
+# url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/cam.constellations.lines.json"
+url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/cam.constellations.lines.json"
 constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
   st_transform(crs = virginia_beach) %>%
@@ -60,7 +61,8 @@ constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   mutate(geometry = geometry * flip) 
 st_crs(constellation_lines_sf_cam) <- virginia_beach
 ########################################
-url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
+# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
+url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/neutron_star_PSR_J0740p6620_messier_format.json"
 # url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/j0740.json"
 stars_sf_ns_j0740 <- st_read(url4,stringsAsFactors = FALSE) %>% 
   st_transform(crs = virginia_beach) %>%
@@ -85,7 +87,7 @@ p <- ggplot() +
   scale_y_continuous(breaks = seq(0, 90, 15)) +
   scale_size_continuous(range = c(0, 2)) +
   annotation_custom(mask) +
-  labs(caption = 'STRONG SAUCE\nVirginia Beach, VA, USA\nPSR J0740+6620\n17th May 2021') +
+  labs(caption = "STRONG SAUCE\nVirginia Beach, VA, USA\nPSR J0740+6620\n17th May 2021") +
   theme_void() +
   theme(legend.position = "none",
         panel.grid.major = element_line(color = "grey35", linewidth = 1),  
@@ -97,9 +99,9 @@ p <- ggplot() +
                                     face = 2, size = 25, 
                                     margin = margin(150, 20, 20, 20)))
 ########################################
-# ggsave('../figs/vb2021.png', plot = p, width = unit(10, 'in'), 
-#        height = unit(15, 'in'))
+ggsave('./figs/vb2021.png', plot = p, width = unit(10, 'in'), 
+       height = unit(15, 'in'))
 
-# Save as PDF.
-ggsave('../figs/vb2021.pdf', plot = p, width = unit(10, 'in'), 
+# # Save as PDF.
+ggsave('./figs/vb2021.pdf', plot = p, width = unit(10, 'in'), 
        height = unit(15, 'in'))
