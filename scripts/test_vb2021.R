@@ -52,8 +52,18 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
 ########################################
 # Color specific constellations
 # url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
-url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/consts/data/constellations2color.json"
-constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
+url_other_constellations <- "https://raw.githubusercontent.com/cmutnik/star_map/consts/data/constellations2color.json"
+constellation_lines_sf_other <- st_read(url_other_constellations, stringsAsFactors = FALSE) %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
+  st_transform(crs = virginia_beach) %>%
+  st_intersection(hemisphere) %>%
+  filter(!is.na(st_is_valid(.))) %>%
+  mutate(geometry = geometry * flip) 
+st_crs(constellation_lines_sf_cam) <- virginia_beach
+########################################
+# Color specific constellations
+url_cam_constellation <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
+constellation_lines_sf_cam <- st_read(url_cam_constellation, stringsAsFactors = FALSE) %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
   st_transform(crs = virginia_beach) %>%
   st_intersection(hemisphere) %>%
@@ -77,7 +87,9 @@ p <- ggplot() +
           color = "white")+
   geom_sf(data = constellation_lines_sf, linewidth = 1, color = "#ffffff",
           size = 2) +
-  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#1eff00",
+  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#ff3700e4",
+          size = 3) +
+  geom_sf(data = constellation_lines_sf_other, linewidth = 1, color = "#1eff00",
           size = 3) +
   # geom_sf(data = stars_sf_ns_j0740, aes(size = -exp(mag), alpha = -exp(mag)),
   geom_sf(data = stars_sf_ns_j0740, aes(size = 20, alpha = 1),

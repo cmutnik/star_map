@@ -52,7 +52,7 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
 ########################################
 # Color specific constellations
 # url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/cam.constellations.lines.json"
-url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/cam.constellations.lines.json"
+url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
 constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
   st_transform(crs = virginia_beach) %>%
@@ -61,8 +61,8 @@ constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   mutate(geometry = geometry * flip) 
 st_crs(constellation_lines_sf_cam) <- virginia_beach
 ########################################
-# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
-url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/neutron_star_PSR_J0740p6620_messier_format.json"
+url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
+# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/neutron_star_PSR_J0740p6620_messier_format.json"
 # url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/j0740.json"
 stars_sf_ns_j0740 <- st_read(url4,stringsAsFactors = FALSE) %>% 
   st_transform(crs = virginia_beach) %>%
