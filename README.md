@@ -6,6 +6,8 @@
 
 > [scripts/](./scripts) is where all the `R` and other code for generating sky-maps are stored.
 
+> [notebooks/](./notebooks) to store `*.ipynb` notebooks
+
 ----
 ### Notes ###
 When saving figs in `R` the pathing starts at the root directory, not a relative path from where the script is being stored/executed from.
@@ -13,3 +15,11 @@ When saving figs in `R` the pathing starts at the root directory, not a relative
 ----
 ### Example ###
 ![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
+
+**Make chart with multiple colors, using [`test_vb2021.R`](./scripts/test_vb2021.R):**
+
+![](./figs/test_vb2021.png)
+
+**Made using []()**
+
+![](./figs/pythonic_star_map.png)

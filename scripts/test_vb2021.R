@@ -46,7 +46,7 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
                           0.5 + 0.46 * cos(seq(0, 2 *pi, len = 100))),
                     y =  c(0.5, 0, 0, 1, 1, 0.5, 
                            0.5 + 0.46 * sin(seq(0, 2*pi, len = 100))),
-                    gp = gpar(fill = '#191d29', col = '#191d29'))
+                    gp = gpar(fill = '#0E1423', col = '#0E1423')) # "#041A40" is the night-sky color code
 ########################################
 ########################################
 ########################################
@@ -59,7 +59,7 @@ constellation_lines_sf_other <- st_read(url_other_constellations, stringsAsFacto
   st_intersection(hemisphere) %>%
   filter(!is.na(st_is_valid(.))) %>%
   mutate(geometry = geometry * flip) 
-st_crs(constellation_lines_sf_cam) <- virginia_beach
+st_crs(constellation_lines_sf_other) <- virginia_beach
 ########################################
 # Color specific constellations
 url_cam_constellation <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
@@ -102,16 +102,16 @@ p <- ggplot() +
   labs(caption = "STRONG SAUCE\nVirginia Beach, VA, USA\nPSR J0740+6620\n17th May 2021") +
   theme_void() +
   theme(legend.position = "none",
-        panel.grid.major = element_line(color = "grey35", linewidth = 1),  
-        panel.grid.minor = element_line(color = "grey20", linewidth = 1),  
-        panel.border = element_blank(),  
-        plot.background = element_rect(fill = "#191d29", color = "#191d29"),
+        panel.grid.major = element_line(color = "grey35", linewidth = 1),
+        panel.grid.minor = element_line(color = "grey20", linewidth = 1),
+        panel.border = element_blank(),
+        plot.background = element_rect(fill = "#0E1423", color = "#0E1423"), # "#041A40" is the night-sky color code
         plot.margin = margin(20, 20, 20, 20),
-        plot.caption = element_text(color = 'white', hjust = 0.5, 
-                                    face = 2, size = 25, 
+        plot.caption = element_text(color = 'white', hjust = 0.5,
+                                    face = 2, size = 25,
                                     margin = margin(150, 20, 20, 20)))
 ########################################
-ggsave('./figs/test_vb2021.png', plot = p, width = unit(10, 'in'), 
+ggsave('./figs/test_vb2021.png', plot = p, width = unit(10, 'in'),
        height = unit(15, 'in'))
 
 # # # Save as PDF.

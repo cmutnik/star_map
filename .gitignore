@@ -1,6 +1,11 @@
 # Local changes
 # ./data/hip_main.dat
 .DS_Store
+de421.bsp
+constellationship.fab
+constellationship_cam.fab
+hip_main.dat
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
