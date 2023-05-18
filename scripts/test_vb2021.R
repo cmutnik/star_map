@@ -46,14 +46,24 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
                           0.5 + 0.46 * cos(seq(0, 2 *pi, len = 100))),
                     y =  c(0.5, 0, 0, 1, 1, 0.5, 
                            0.5 + 0.46 * sin(seq(0, 2*pi, len = 100))),
-                    gp = gpar(fill = '#191d29', col = '#191d29'))
+                    gp = gpar(fill = '#0E1423', col = '#0E1423')) # "#041A40" is the night-sky color code
 ########################################
 ########################################
 ########################################
 # Color specific constellations
-# url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/cam.constellations.lines.json"
-url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
-constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
+# url3 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
+url_other_constellations <- "https://raw.githubusercontent.com/cmutnik/star_map/consts/data/constellations2color.json"
+constellation_lines_sf_other <- st_read(url_other_constellations, stringsAsFactors = FALSE) %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
+  st_transform(crs = virginia_beach) %>%
+  st_intersection(hemisphere) %>%
+  filter(!is.na(st_is_valid(.))) %>%
+  mutate(geometry = geometry * flip) 
+st_crs(constellation_lines_sf_other) <- virginia_beach
+########################################
+# Color specific constellations
+url_cam_constellation <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/cam.constellations.lines.json"
+constellation_lines_sf_cam <- st_read(url_cam_constellation, stringsAsFactors = FALSE) %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=90")) %>% 
   st_transform(crs = virginia_beach) %>%
   st_intersection(hemisphere) %>%
@@ -61,8 +71,8 @@ constellation_lines_sf_cam <- st_read(url3, stringsAsFactors = FALSE) %>%
   mutate(geometry = geometry * flip) 
 st_crs(constellation_lines_sf_cam) <- virginia_beach
 ########################################
+# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
 url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/neutron_star_PSR_J0740p6620_messier_format.json"
-# url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/restructure/data/neutron_star_PSR_J0740p6620_messier_format.json"
 # url4 <- "https://raw.githubusercontent.com/cmutnik/star_map/main/data/j0740.json"
 stars_sf_ns_j0740 <- st_read(url4,stringsAsFactors = FALSE) %>% 
   st_transform(crs = virginia_beach) %>%
@@ -77,7 +87,9 @@ p <- ggplot() +
           color = "white")+
   geom_sf(data = constellation_lines_sf, linewidth = 1, color = "#ffffff",
           size = 2) +
-  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#1eff00",
+  geom_sf(data = constellation_lines_sf_cam, linewidth = 1, color = "#ff3700e4",
+          size = 3) +
+  geom_sf(data = constellation_lines_sf_other, linewidth = 1, color = "#1eff00",
           size = 3) +
   # geom_sf(data = stars_sf_ns_j0740, aes(size = -exp(mag), alpha = -exp(mag)),
   geom_sf(data = stars_sf_ns_j0740, aes(size = 20, alpha = 1),
@@ -90,18 +102,18 @@ p <- ggplot() +
   labs(caption = "STRONG SAUCE\nVirginia Beach, VA, USA\nPSR J0740+6620\n17th May 2021") +
   theme_void() +
   theme(legend.position = "none",
-        panel.grid.major = element_line(color = "grey35", linewidth = 1),  
-        panel.grid.minor = element_line(color = "grey20", linewidth = 1),  
-        panel.border = element_blank(),  
-        plot.background = element_rect(fill = "#191d29", color = "#191d29"),
+        panel.grid.major = element_line(color = "grey35", linewidth = 1),
+        panel.grid.minor = element_line(color = "grey20", linewidth = 1),
+        panel.border = element_blank(),
+        plot.background = element_rect(fill = "#0E1423", color = "#0E1423"), # "#041A40" is the night-sky color code
         plot.margin = margin(20, 20, 20, 20),
-        plot.caption = element_text(color = 'white', hjust = 0.5, 
-                                    face = 2, size = 25, 
+        plot.caption = element_text(color = 'white', hjust = 0.5,
+                                    face = 2, size = 25,
                                     margin = margin(150, 20, 20, 20)))
 ########################################
-ggsave('./figs/vb2021.png', plot = p, width = unit(10, 'in'), 
+ggsave('./figs/test_vb2021.png', plot = p, width = unit(10, 'in'),
        height = unit(15, 'in'))
 
-# # Save as PDF.
-ggsave('./figs/vb2021.pdf', plot = p, width = unit(10, 'in'), 
-       height = unit(15, 'in'))
+# # # Save as PDF.
+# ggsave('./figs/vb2021.pdf', plot = p, width = unit(10, 'in'), 
+#        height = unit(15, 'in'))
