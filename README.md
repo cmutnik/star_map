@@ -13,6 +13,12 @@
 When saving figs in `R` the pathing starts at the root directory, not a relative path from where the script is being stored/executed from.
 
 ----
+
+[binary companion paper](./other_data/binary_pair/stz607.pdf)
+
+![binary_companion_paper.png](./other_data/binary_pair/binary_companion_paper.png)
+
+----
 ### Example ###
 ![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
 
