@@ -19,6 +19,10 @@ When saving figs in `R` the pathing starts at the root directory, not a relative
 ![binary_companion_paper.png](./other_data/binary_pair/binary_companion_paper.png)
 
 ----
+### Cool Links ###
+[This repo](https://github.com/ofrohn/d3-celestial) is worth checking out for more interactive maps and various other things.
+
+----
 ### Example ###
 ![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
 
@@ -29,3 +33,4 @@ When saving figs in `R` the pathing starts at the root directory, not a relative
 **Made using []()**
 
 ![](./figs/pythonic_star_map.png)
+
