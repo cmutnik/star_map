@@ -1,4 +1,4 @@
-Made using [`kate.R`:](../scripts/kate.R)
+Newer version, with Zodiac sign highlighted and background colors more adaptive, was made using [`kate.R`:](../scripts/kate.R)
 
 ![](./kates_birth_location_greenwich.png)
 
