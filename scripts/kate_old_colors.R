@@ -46,7 +46,7 @@ mask <- polygonGrob(x = c(1, 1, 0, 0, 1, 1,
                           0.5 + 0.46 * cos(seq(0, 2 *pi, len = 100))),
                     y =  c(0.5, 0, 0, 1, 1, 0.5, 
                            0.5 + 0.46 * sin(seq(0, 2*pi, len = 100))),
-                    gp = gpar(fill = '#0E1423', col = '#0E1423'))
+                    gp = gpar(fill = '#191d29', col = '#191d29'))
 ########################################
 p <- ggplot() +
   geom_sf(data = stars_sf, aes(size = -exp(mag), alpha = -exp(mag)),
@@ -64,7 +64,7 @@ p <- ggplot() +
         panel.grid.major = element_line(color = "grey35", linewidth = 1),  
         panel.grid.minor = element_line(color = "grey20", linewidth = 1),  
         panel.border = element_blank(),  
-        plot.background = element_rect(fill = "#0E1423", color = "#0E1423"),
+        plot.background = element_rect(fill = "#191d29", color = "#191d29"),
         plot.margin = margin(20, 20, 20, 20),
         plot.caption = element_text(color = 'white', hjust = 0.5, 
                                     face = 2, size = 25, 
