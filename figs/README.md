@@ -5,5 +5,5 @@ Newer version, with Zodiac sign highlighted and background colors more adaptive,
 
 Older version made using [`noah_ariyeh_honolulu_hi.R`:](../scripts/noah_ariyeh_honolulu_hi.R)
 
-![](./ariyeh_honolulu_hi_usa.png)
+![](./Ariyeh_honolulu_hi_usa.png)
 
