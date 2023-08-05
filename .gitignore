@@ -7,6 +7,12 @@ constellationship_cam.fab
 hip_main.dat
 .Rapp.history
 
+figs/zeta.png
+figs/zeta2.png
+scripts/zeta.R
+scripts/zeta2.R
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
