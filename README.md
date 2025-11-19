@@ -12,6 +12,12 @@
 ### Notes ###
 When saving figs in `R` the pathing starts at the root directory, not a relative path from where the script is being stored/executed from.
 
+To execute an R script, you can use VSCode shortcuts or:
+```bash
+cd scripts
+Rscript star_chart_with_datetime.R
+```
+
 ----
 
 [binary companion paper](./other_data/binary_pair/stz607.pdf)
@@ -25,6 +31,10 @@ When saving figs in `R` the pathing starts at the root directory, not a relative
 ----
 ### Example ###
 ![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
+
+**Make a chart with accurate map for entered location, date, and time**
+
+![](./figs/queens_new_york_time.png)
 
 **Make chart with multiple colors, using [`test_vb2021.R`](./scripts/test_vb2021.R):**
 
