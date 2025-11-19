@@ -18,6 +18,8 @@ cd scripts
 Rscript star_chart_with_datetime.R
 ```
 
+NOTE: Constellations rely on any external repo, so a copy of this file has been added to [here](./data/constellations.lines.json).
+
 ----
 
 [binary companion paper](./other_data/binary_pair/stz607.pdf)
@@ -29,12 +31,12 @@ Rscript star_chart_with_datetime.R
 [This repo](https://github.com/ofrohn/d3-celestial) is worth checking out for more interactive maps and various other things.
 
 ----
-### Example ###
-![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
+### Examples ###
+<!-- ![](./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png)
 
 **Make a chart with accurate map for entered location, date, and time**
 
-![](./figs/queens_new_york_time.png)
+![](./figs/new_york_variants/queens_new_york_time.png)
 
 **Make chart with multiple colors, using [`test_vb2021.R`](./scripts/test_vb2021.R):**
 
@@ -42,5 +44,29 @@ Rscript star_chart_with_datetime.R
 
 **Made using []()**
 
-![](./figs/pythonic_star_map.png)
+![](./figs/pythonic_star_map.png) -->
 
+More examples are shown [here](./scripts/README.md#example-image-outputs).
+
+<table>
+    <tr>
+        <td>
+            <b>Strong Sauce:</b>
+            <img width="100%" alt="Strong Sauce" src="./figs/_figsOG/vb2021_strong_sauce_PSR_J0740+6620.png">
+        </td>
+        <td>
+            <b>Multi-colored chart `./scripts/test_vb2021.R`:</b>
+            <img width="75%" alt="Multiple Colors" src="./figs/test_vb2021.png">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>Accurate for given location, date, and time:</b>
+            <img width="100%" align="left" alt="Queens NY 940512@1730" src="./figs/new_york_variants/queens_new_york_time.png">
+        </td>
+        <td>
+            <b>Chart made using python script:</b>
+            <img width="100%" alt="Python Star Map" src="./figs/pythonic_star_map.png">
+        </td>
+    </tr>
+</table>
