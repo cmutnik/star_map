@@ -1,3 +1,5 @@
+[![Demo](https://img.shields.io/badge/Website-live-green)](https://starmapdreamcatcher.streamlit.app/)
+
 **convert all non-black pixels to white**
 ```bash
 python convert_non_black_to_white.py no_stars.png mapped.png

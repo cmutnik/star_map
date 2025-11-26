@@ -1,6 +1,8 @@
 # Star Maps #
 
-[![Demo](https://img.shields.io/badge/Website-live-green)](http://takotime808.shinyapps.io/star_map)
+[![Make Star Map](https://img.shields.io/badge/Website-live-green)](http://takotime808.shinyapps.io/star_map)
+[![Make STL File](https://img.shields.io/badge/Website-live-green)](https://starmapdreamcatcher.streamlit.app/)
+
 
 > [deploy_to_shinyapps](./deploy_to_shinyapps/) stores the files needed to deploy the app on [shinyapps.io](shinyapps.io)
 
